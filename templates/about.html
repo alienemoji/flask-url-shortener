@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+	</head>
+	<body>
+		{% include 'header.html' %}
+		<div class="everything">
+			<h1>About this site</h1>
+			<p>A simple URL shortener created with Flask. It utilizes Flask for the backend while URLs are stored in a SQLite database.</p>
+			<p>Source: <a href="https://github.com/alienemoji/flask-url-shortener">Github</a></p>
+		</div>
+	</body>
+</html>

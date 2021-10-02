@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>URL Shortener</title>
+		<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+		<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+	</head>
+	
+	<body>
+		{% include 'header.html' %}
+		<div class="everything">
+			<h1>URL Shortener</h1>
+				<div id="form-div">
+					<form action="/shorten" method="POST" id="generateForm">
+						<p>
+							<input type="url" id="url" name="url" placeholder="Enter URL" class="form-box" title="Enter a URL (must include https://)" required />
+						</p>
+						<div class="h-captcha" data-sitekey="hcaptcha site key here" data-theme="dark"></div>
+						<p>
+							<button type="submit" class="submit-button" onclick="document.getElementById('generateForm').submit()">Shorten</button>
+						</p>
+					</form>
+				</div>
+  
+				<div class="notifications">
+					{% if notification is defined %}
+					<p class="successn">{{notification|e}}</p>
+					{% endif %}
+					{% if notificationFail is defined %}
+					<p class="errorn">{{notificationFail}}</p>
+					{% endif %}
+				</div>
+		</div>
+  
+	</body>
+</html>

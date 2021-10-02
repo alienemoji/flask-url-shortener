@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Gemunu+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300&display=swap');
+
+:root {
+	--main-bg-color: #111828;
+	--main-accent-color: #2563ea;
+	--main-heading-color: #FFFFFF;
+	--main-text-color: #DDDDDD;
+	--dotnet-hover-color: #FFFFFF;
+	--form-bg-color: #202938;
+	--site-title-color: #FFFFFF;
+	--dotnet-color: #FF7F02;
+	--font1: "Gemunu Libre";
+	--font2: "Abel";
+}
+
+html{
+	font-family: var(--font2), sans-serif;
+	background-color: var(--main-bg-color);
+}
+
+body{
+	color: var(--main-text-color);
+}
+
+.everything{
+	width: 600px;
+	margin: auto;
+}
+
+#form-div{
+	display: block;
+	width: 380px;
+	padding: 32px;
+	background-color: var(--form-bg-color);
+	margin: auto;
+	text-align: center;
+	border-radius: 6px;
+}
+
+.submit-button{
+	border: 2px solid var(--main-accent-color);
+	border-radius: 6px;
+	font-size: 18px;
+	background-color: var(--main-accent-color);
+	color: #FFFFFF;
+	padding: 10px 16px;
+	transition: all 0.4s;
+	font-family: var(--font2), sans-serif;
+	cursor: pointer;
+}
+
+.submit-button:Hover{
+	border: 2px solid var(--main-accent-color);
+	background-color: var(--form-bg-color);
+	color: var(--main-heading-color);
+}
+
+.form-box{
+	width: 90%;
+	border: none;
+	border-radius: 6px;
+	font-family: var(--font2), sans-serif;
+	font-size: 20px;
+	background-color: var(--main-bg-color);
+	color: #eee;
+	text-align: center;
+	margin-bottom: 26px;
+	transition: all 0.4s;
+}
+
+.form-box:Focus{
+	outline: 0px;
+	transition: all 0.4s;
+}
+
+input:focus:invalid{
+}
+
+.h-captcha{
+	margin-bottom: 26px;
+}
+
+h1{
+	font-family: var(--font1), sans-serif;
+	font-size: 24px;
+	color: var(--main-heading-color);
+	text-align: center;
+	font-weight: 300;
+}
+
+p{
+	font-family: var(--font2), sans-serif;
+}
+
+a{
+	color: var(--dotnet-color);
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.notifications{
+	font-size: 18px;
+	text-align: center;
+}
+
+.successn{
+	color: var(--main-accent-color);
+}
+
+.errorn{
+	color: #bb2020;
+}
+
+.outLink{
+	color: #22aa44;
+}
+
+ul .navigation{
+  list-style-type: none;
+  position: fixed;
+  top: 0;
+}
+
+.navdiv{
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+li{
+	display: inline;
+}
+
+li a{
+	color: var(--main-text-color);
+	text-decoration: none;
+	padding: 12px;
+	border-right: 1px solid #333;
+	margin-left: 0px;
+	font-family: var(--font2);
+}
+
+li a:hover{
+	color: #FFFFFF;
+}
+
+.site-title{
+	color: var(--site-title-color);
+	font-family:var(--font2);
+	font-size: 20px;
+}
+
+.dotnet{
+	color: var(--dotnet-color);
+}
+
+.site-title:hover{
+	color: #var(--main-heading-color);
+}
+
+.site-title:hover .dotnet{
+	color: var(--main-accent-color);
+}
+
+::placeholder{
+	color: white;
+	opacity: 0.6;
+}
+
+.bold{
+	font-weight: bold;
+}
