@@ -13,7 +13,16 @@ SERVERN = "localhost" # should change this to find hostname automatically
 # get hCaptcha site keys from environment variables
 hcaptcha_secret = os.environ.get('HCAPTCHA_SECRET')
 hcaptcha_site_key = os.environ.get('hcaptcha_sitekey')
-print(hcaptcha_site_key)
+
+#initialize database
+conn = sqlite3.connect("urls.db")
+c = conn.cursor()
+c.execute("""
+        CREATE TABLE IF NOT EXISTS urls
+        (id INTEGER PRIMARY KEY, url TEXT);
+""")
+conn.commit()
+conn.close()
 
 #define routes
 @app.route('/')
