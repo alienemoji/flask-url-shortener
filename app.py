@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template
-from os import urandom
+import os
 import random
 import string
 import sqlite3
@@ -8,18 +8,22 @@ import requests #for hCaptcha
 import json #to help with hCaptcha data
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = str(urandom(24));
-SERVERN = "localhost"
+app.config["SECRET_KEY"] = str(os.urandom(24));
+SERVERN = "localhost" # should change this to find hostname automatically
+# get hCaptcha site keys from environment variables
+hcaptcha_secret = os.environ.get('HCAPTCHA_SECRET')
+hcaptcha_site_key = os.environ.get('hcaptcha_sitekey')
+print(hcaptcha_site_key)
 
+#define routes
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", HCAPTCHA_SITEKEY = hcaptcha_site_key)
 
 @app.route('/shorten', methods = ["POST"])
 def shorten():
     #hcaptcha request
     hcaptcha_token = request.form['h-captcha-response']
-    hcaptcha_secret = 'hCaptcha-api-secret'
     api_endpoint = 'https://hcaptcha.com/siteverify'
     hc_data = {'response':hcaptcha_token,'secret':hcaptcha_secret}
     r = requests.post(url = api_endpoint, data = hc_data)
@@ -36,7 +40,7 @@ def shorten():
         id = c.lastrowid
         shortlink = f'http://{SERVERN}/{id}'
         conn.close()
-        return render_template("index.html", notification = f'Your shortened URL:\n{shortlink}')
+        return render_template("index.html", HCAPTCHA_SITEKEY = hcaptcha_site_key, notification = f'Your shortened URL:\n{shortlink}')
 
 @app.route('/<id>')
 def go(id):
