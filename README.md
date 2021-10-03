@@ -5,7 +5,7 @@ To use locally, first set environment variables in your OS for your hCaptcha key
 -   HCAPTCHA_SECRET
 -   HCAPTCHA_SITEKEY
 
-Then run the app.
+Then run the app. It will create an SQLite database named links.db
 
 Contributions are welcome no matter how small. I don't have any specific rules for contributing, just open an issue first. You are welcome to add any features you feel would be useful in a URL shortener. If you're a Hacktoberfest participant finding this repo, feel free to work on my to-do list below.
 
