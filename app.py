@@ -12,10 +12,10 @@ app.config["SECRET_KEY"] = str(os.urandom(24));
 SERVERN = "localhost" # should change this to find hostname automatically
 # get hCaptcha site keys from environment variables
 hcaptcha_secret = os.environ.get('HCAPTCHA_SECRET')
-hcaptcha_site_key = os.environ.get('hcaptcha_sitekey')
+hcaptcha_site_key = os.environ.get('HCAPTCHA_SITEKEY')
 
 #initialize database
-conn = sqlite3.connect("urls.db")
+conn = sqlite3.connect("links.db")
 c = conn.cursor()
 c.execute("""
         CREATE TABLE IF NOT EXISTS urls
@@ -29,6 +29,7 @@ conn.close()
 def index():
     return render_template("index.html", HCAPTCHA_SITEKEY = hcaptcha_site_key)
 
+# make shortlink from input URL
 @app.route('/shorten', methods = ["POST"])
 def shorten():
     #hcaptcha request
@@ -42,7 +43,7 @@ def shorten():
         return render_template("index.html", notificationFail = "Please complete the captcha correctly")
     else:
         url = request.form['url']
-        conn = sqlite3.connect("urls.db")
+        conn = sqlite3.connect("links.db")
         c = conn.cursor()
         c.execute("INSERT INTO urls VALUES (NULL, ?);", (url,))
         conn.commit()
@@ -51,9 +52,10 @@ def shorten():
         conn.close()
         return render_template("index.html", HCAPTCHA_SITEKEY = hcaptcha_site_key, notification = f'Your shortened URL:\n{shortlink}')
 
+# usage: http://example.com/id will redirect to long url
 @app.route('/<id>')
 def go(id):
-    conn = sqlite3.connect("urls.db")
+    conn = sqlite3.connect("links.db")
     c = conn.cursor()
     c.execute("SELECT * FROM urls WHERE id=?;", (id,))
     url = c.fetchone()
