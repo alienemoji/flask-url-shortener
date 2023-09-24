@@ -1,6 +1,8 @@
 # flask-url-shortener
 A simple URL shortener made with Flask. hCaptcha integrated to reduce spam. URLs are stored in a SQLite database.
 
+![Screenshot](screenshot.png)
+
 To use locally, first set environment variables in your OS for your hCaptcha keys:
 
 `export HCAPTCHA_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxx`
