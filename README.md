@@ -2,7 +2,9 @@
 A simple URL shortener made with Flask. hCaptcha integrated to reduce spam. URLs are stored in a SQLite database.
 
 To use locally, first set environment variables in your OS for your hCaptcha keys:
+
 `export HCAPTCHA_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxx`
+
 `export HCAPTCHA_SITEKEY=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
 
 In app.py, set SERVERN = yourdomain.com
